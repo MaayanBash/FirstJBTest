@@ -52,31 +52,37 @@ function save() {
 }
 
 function displayTasks() {
-
-    //take data from storage:
+    // Take data from storage:
     let json = localStorage.getItem("tasks");
     const tasks = JSON ? JSON.parse(json) : [];
     let html = "";
     for (let i = 0; i < tasks.length; i++) {
-        html += `
-    <div id = "task">
-    <button class = "remove" onclick ="remove(${i})">❌</button>
-        <p class= "headP">
+      // Split the date and time
+      const dateTime = tasks[i].time.split("T");
+      const date = dateTime[0];
+      const time = dateTime[1];
+  
+      html += `
+        <div id="task">
+          <button class="remove" onclick="remove(${i})">❌</button>
+          <p class="headP">
             ${tasks[i].head}
-        </p>
-        <p class= "descriptionP">
+          </p>
+          <div class="mainDescription">
+          <p class="descriptionP">
             ${tasks[i].description}
-        </p>
-        <hr>
-        <footer>${tasks[i].time}</footer>
-    </div>
-`;
+          </p>
+          </div>
+          <footer>${date} ${time}</footer>
+        </div>
+      `;
     }
-
-    //take section from html
+  
+    // Take section from HTML
     let sectionTasks = document.getElementById("sectionTasks");
     sectionTasks.innerHTML = html;
-}
+  }
+  
 
 function remove(index) {
     //take data from storage:

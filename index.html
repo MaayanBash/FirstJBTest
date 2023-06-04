@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="style.css">
-        <script defer="defer" src="main.js"></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Project</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="main.js"></script>
+</head>
 
-    <body>
-        <div class="m-hero">
-            <form onsubmit="save()">
-                <label>Task Label</label>
-                <input type="text" placeholder="Task Label" id="taskHeadBox">
-                <br><br>
-                <label>Task Description</label>
-                <textarea name="" id="descriptionBox" cols="30" rows="3"></textarea>
-                <br><br>
+<body>
 
-                <label for="">Date and Time</label>
-                <input type="datetime-local" id="timeBox">
-                <br><br>
+    <h1>To Do List</h1>
+    <div id="formDiv">
+        <form onsubmit="save()">
+            <label for="taskHeadBox">The Task</label>
+            <br>
+            <input type="text" name="taskHead" id="taskHeadBox">
+            <br><br>
 
-                <button type="submit">Add</button>
-                <button type="reset">Clear</button>
-            </form>
-        </div>
+            <label for="descriptionBox">Task Description</label>
+            <br>
+            <textarea id="descriptionBox"></textarea>
+            <br><br>
 
-        <section id="sectionTask"></section>
-    </body>
+            <label for="timeBox">Date and Time</label>
+            <br>
+            <input type="datetime-local" id="timeBox" >
+            <br><br>
+
+            <button type="submit" id="addButton">Add task</button>
+            <button type="reset" id="clearButton">Clear</button>
+
+        </form>
+    </div>
+    <section id="sectionTasks"></section>
+
+</body>
+
 </html>
