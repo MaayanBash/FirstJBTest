@@ -74,6 +74,7 @@ function displayTasks(isRemoving) {
           <p class="headP">${tasks[i].head}</p>
           <div class="mainDescription">
             <p class="descriptionP">${tasks[i].description}</p>
+            <button id="sizeUp" onclick = "sizeUp(${i})">⎋</button>
           </div>
           <footer>${date} ${time}</footer>
         </div>
@@ -103,4 +104,59 @@ function remove(index) {
 
   // Call displayTasks function to update the displayed tasks
   displayTasks(true);
+}
+// =========================================================================================
+const modal = document.getElementById("myModal");
+const button = document.getElementById("sizeUp");
+const span = document.getElementsByClassName("close");
+const taskHeadBox = document.getElementById("taskHeadBox");
+  const descriptionBox = document.getElementById("descriptionBox");
+  const timeBox = document.getElementById("timeBox");
+
+  // Create task object
+  const head = taskHeadBox.value;
+  const description = descriptionBox.value;
+  const time = timeBox.value;
+  const task = {
+    head,
+    description,
+    time,
+  };
+  let json = localStorage.getItem("tasks");
+  const tasks = json ? JSON.parse(json) : [];
+  tasks.push(task);
+  
+  
+  function sizeUp(i) {
+      modal.style.display = "block";
+      let json = localStorage.getItem("tasks");
+      const tasks = json ? JSON.parse(json) : [];
+      const dateTime = tasks[i].time.split("T");
+      const date = dateTime[0];
+      const time = dateTime[1];
+      let html =   `
+        <div id="task1">
+          <p class="headP1">${tasks[i].head}</p>
+          <div class="mainDescription1">
+            <p class="descriptionP1">${tasks[i].description}</p>
+          </div>
+          <footer>${date} ${time}</footer>
+        </div>
+      `;
+      
+      
+      window.onclick = function(event) {
+        if (event.target == modal) {
+            sizeDown();
+        }
+      }
+      
+      // Take sectionTasks from HTML
+      let sectionTasks = document.getElementById("modal-task");
+      sectionTasks.innerHTML = html;
+    }
+
+function sizeDown() {
+    modal.style.display = "none";
+    
 }
