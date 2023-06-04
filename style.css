@@ -1,29 +1,107 @@
 body {
-    background-image: url("assets/corkboard.jpg");
+    background-image: url("assets/yellowp.avif");
+    background-repeat: repeat-y;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-#formDiv {
-    background-image: url("assets/corkboard.jpg");
-    border: 1px solid black;
-    padding: 10px;
-    margin: 10px;
-    display: inline-block;
+.mainHeader {
+    margin: 0;
+    background-image: url("assets/banner3.jpeg");
+    display: block;
+    padding: 0;
+    height: 100px;
+    text-align: center;
+    filter: blur(4px);
 }
 
 h1 {
-    font-size: 3em;
-    text-align: center;
-    text-decoration: underline;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transform: translateY(-80px);
 }
-.headP{
+#timeBox {
+    background-color: #0080ff;
+    padding: 15px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    font-family: "Roboto Mono",monospace;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+::-webkit-calendar-picker-indicator {
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#formDiv {
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    font-size: 20px;
+    width: 700px;
+    height: auto;
+    margin: 24px auto 100px;
+}
+.margin {
+    margin-left: 12px;
+    margin-bottom: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#descriptionBox {
+    width: 200px;
+    overflow: hidden;
+    background-color: #FFF;
+    color: #222;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+    resize: none;
+    line-height: 40px;
+    padding: 45px 100px 34px;
+    background-image: url(https://static.tumblr.com/maopbtg/E9Bmgtoht/lines.png), url("https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png");
+    background-repeat: repeat-y, repeat;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    -webkit-box-shadow: 0 2px 14px #000;
+    box-shadow: 0 2px 14px #000;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #FFF;
+}
+
+#taskHeadBox {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #5b7c99;
+    color: #5b7c99;
+    font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 28px;
+    font-weight: bold;
+    width: 220px;
+    outline: none;
+}
+
+.headP {
     margin-left: 50px;
 }
-.mainDescription{
+.mainDescription {
     transform: translateY(-20px);
 }
 .descriptionP {
+    height: 100px;
     margin-left: 52px;
     display: inline-block;
     overflow: auto;
@@ -31,14 +109,26 @@ h1 {
     transform: translateY(10px);
 }
 
-#sectionTasks{
+#sectionTasks {
     margin: 20px;
     display: flex;
     flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
 }
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    animation: fade-in 2s;
+  }
 
 #task {
     display: inline-block;
@@ -52,10 +142,15 @@ h1 {
     overflow-x: hidden;
     width: 200px;
     height: 200px;
-    animation: fade-in 0.5s ease-in-out;
-    animation-fill-mode: both;
-    animation-delay: 0.2s;
+}
+#task.newClass {
+    animation: fade-in 2s;
+}
 
+
+@keyframes fade-in {
+    0% { opacity:0;}
+    100% { opacity:1;}
 }
 
 #task .remove {
@@ -66,7 +161,6 @@ h1 {
     display: inline-block;
 }
 
-
 .remove {
     border: none;
     background-color: transparent;
@@ -75,21 +169,98 @@ h1 {
     right: 3px;
     cursor: pointer;
 }
-
 footer {
     position: absolute;
     bottom: 2px;
-    right: 3px;    
+    right: 3px;
 }
 #task footer {
     color: gray;
     font-size: 12px;
-  }
+}
 
 #addButton {
     background-color: green;
 }
 
-#clearButton {
+#clearButtonutton {
     background-color: red;
+}
+#addButton {
+  appearance: none;
+  background-color: #FFFFFF;
+  border-radius: 40em;
+  border-style: none;
+  box-shadow: #ADCFFF 0 -12px 6px inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -.24px;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.3rem;
+  quotes: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#addButton:hover {
+  background-color: yellow;
+  box-shadow: #FF6314 0 -6px 8px inset;
+  transform: scale(1.125);
+}
+
+#addButton:active {
+  transform: scale(1.025);
+}
+
+@media (min-width: 768px) {
+  #addButton {
+    font-size: 1.5rem;
+    padding: .75rem 2rem;
+  }
+}
+
+
+#clearButton {
+  --b: 3px;  
+  --s: .45em;
+  --color: #373B44;
+  
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#clearButton:hover,
+#clearButton:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+#clearButton:active {
+  background: var(--color);
+  color: #fff;
 }

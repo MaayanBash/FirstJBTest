@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,32 +10,28 @@
 </head>
 
 <body>
-
+    <div class="mainHeader"></div>
     <h1>To Do List</h1>
     <div id="formDiv">
         <form onsubmit="save()">
-            <label for="taskHeadBox">The Task</label>
-            <br>
+        <div class="margin">Task Title:
             <input type="text" name="taskHead" id="taskHeadBox">
-            <br><br>
-
-            <label for="descriptionBox">Task Description</label>
+        </div>
             <br>
-            <textarea id="descriptionBox"></textarea>
+            <br>
+            <textarea placeholder="Enter Text." id="descriptionBox" rows="4" style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px;"></textarea>
             <br><br>
 
             <label for="timeBox">Date and Time</label>
             <br>
-            <input type="datetime-local" id="timeBox" >
+            <input type="datetime-local" id="timeBox" min="2017-04-01">
             <br><br>
 
             <button type="submit" id="addButton">Add task</button>
             <button type="reset" id="clearButton">Clear</button>
-
         </form>
     </div>
     <section id="sectionTasks"></section>
-
 </body>
 
 </html>

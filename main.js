@@ -1,98 +1,106 @@
+// Call the displayTasks function initially
 displayTasks();
-//saving new task:
+
+// Saving new task:
 function save() {
-    //take DOM elements:
-    const taskHeadBox = document.getElementById("taskHeadBox");
-    const descriptionBox = document.getElementById("descriptionBox");
-    const timeBox = document.getElementById("timeBox");
+  // Take DOM elements
+  const taskHeadBox = document.getElementById("taskHeadBox");
+  const descriptionBox = document.getElementById("descriptionBox");
+  const timeBox = document.getElementById("timeBox");
 
-    //create task object:
-    const head = taskHeadBox.value;
-    const description = descriptionBox.value;
-    const time = timeBox.value;
-    const task = { head, description, time };
+  // Create task object
+  const head = taskHeadBox.value;
+  const description = descriptionBox.value;
+  const time = timeBox.value;
+  const task = {
+    head,
+    description,
+    time,
+  };
 
-    //take data from storage:
-    let json = localStorage.getItem("tasks");
-    const tasks = json ? JSON.parse(json) : [];
+  // Take data from storage
+  let json = localStorage.getItem("tasks");
+  const tasks = json ? JSON.parse(json) : [];
 
-    //add new task:
-    tasks.push(task);
+  // Validation
+  if (taskHeadBox.value === "") {
+    alert("Head cannot be empty");
+    taskHeadBox.focus();
+    return;
+  }
+  if (descriptionBox.value === "") {
+    alert("Description cannot be empty");
+    descriptionBox.focus();
+    return;
+  }
+  if (timeBox.value === "") {
+    alert("Time needs to be updated");
+    timeBox.focus();
+    return;
+  }
 
-    // validation:
-    if (taskHeadBox.value === "") {
-        alert("Head cannot be empty");
-        taskHead.focus();
-        return;
-    }
-    if (descriptionBox.value === "") {
-        alert("Description cannot be empty");
-        descriptionBox.focus();
-        return;
-    }
-    if (timeBox.value === "") {
-        alert("time need to be updated");
-        timeBox.focus();
-        return;
-    }
+  // Add new task
+  tasks.push(task);
 
-    //save to storage:
-    json = JSON.stringify(tasks);
-    localStorage.setItem("tasks", json);
+  // Save to storage
+  json = JSON.stringify(tasks);
+  localStorage.setItem("tasks", json);
 
-    //clear fields:
-    taskHeadBox.value = "";
-    descriptionBox.value = "";
-    timeBox.value = "";
+  // Clear fields
+  taskHeadBox.value = "";
+  descriptionBox.value = "";
+  timeBox.value = "";
 
-    //event listeners:
-    event.preventDefault();
+  // Prevent form submission
+  event.preventDefault();
 
-    displayTasks();
+  // Call displayTasks function to update the displayed tasks
+  displayTasks();
 }
 
 function displayTasks() {
-    // Take data from storage:
+    // Take data from storage
     let json = localStorage.getItem("tasks");
-    const tasks = JSON ? JSON.parse(json) : [];
+    const tasks = json ? JSON.parse(json) : [];
     let html = "";
     for (let i = 0; i < tasks.length; i++) {
       // Split the date and time
       const dateTime = tasks[i].time.split("T");
       const date = dateTime[0];
       const time = dateTime[1];
-  
       html += `
-        <div id="task">
+        <div id="task" class="newTask ${i === tasks.length - 1 ? 'fade-in' : ''}">
           <button class="remove" onclick="remove(${i})">❌</button>
-          <p class="headP">
-            ${tasks[i].head}
-          </p>
+          <p class="headP">${tasks[i].head}</p>
           <div class="mainDescription">
-          <p class="descriptionP">
-            ${tasks[i].description}
-          </p>
+            <p class="descriptionP">${tasks[i].description}</p>
           </div>
           <footer>${date} ${time}</footer>
         </div>
       `;
     }
+
   
-    // Take section from HTML
+    // Take sectionTasks from HTML
     let sectionTasks = document.getElementById("sectionTasks");
     sectionTasks.innerHTML = html;
-  }
-  
-
+}
 function remove(index) {
-    //take data from storage:
-    let json = localStorage.getItem("tasks");
-    const tasks = JSON ? JSON.parse(json) : [];
+  // Take data from storage
+  let json = localStorage.getItem("tasks");
+  const tasks = json ? JSON.parse(json) : [];
 
-    tasks.splice(index, 1);
+  tasks.splice(index, 1);
 
-    //save to storage:
-    json = JSON.stringify(tasks);
-    localStorage.setItem("tasks", json);
-    displayTasks();
+  // Save to storage
+  json = JSON.stringify(tasks);
+  localStorage.setItem("tasks", json);
+
+  // Check if tasks array is empty and remove tasks from local storage
+  if (tasks.length === 0) {
+    localStorage.removeItem("tasks");
+  }
+
+  // Call displayTasks function to update the displayed tasks
+  displayTasks();
 }
