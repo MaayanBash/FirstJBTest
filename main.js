@@ -55,10 +55,10 @@ function save() {
   event.preventDefault();
 
   // Call displayTasks function to update the displayed tasks
-  displayTasks();
+  displayTasks(false);
 }
 
-function displayTasks() {
+function displayTasks(isRemoving) {
     // Take data from storage
     let json = localStorage.getItem("tasks");
     const tasks = json ? JSON.parse(json) : [];
@@ -69,7 +69,7 @@ function displayTasks() {
       const date = dateTime[0];
       const time = dateTime[1];
       html += `
-        <div id="task" class="newTask ${i === tasks.length - 1 ? 'fade-in' : ''}">
+        <div id="task" class="newTask ${isRemoving === false && i === tasks.length - 1 ? 'fade-in' : ''}">
           <button class="remove" onclick="remove(${i})">❌</button>
           <p class="headP">${tasks[i].head}</p>
           <div class="mainDescription">
@@ -102,5 +102,5 @@ function remove(index) {
   }
 
   // Call displayTasks function to update the displayed tasks
-  displayTasks();
+  displayTasks(true);
 }

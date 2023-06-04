@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Project</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="main.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>First Project</title>
+        <link rel="stylesheet" href="style.css">
+        <script defer="defer" src="main.js"></script>
+    </head>
 
-<body>
-    <div class="mainHeader"></div>
-    <h1>To Do List</h1>
-    <div id="formDiv">
-        <form onsubmit="save()">
-        <div class="margin">Task Title:
-            <input type="text" name="taskHead" id="taskHeadBox">
+    <body>
+        <div class="mainHeader"></div>
+        <h1>To Do List</h1>
+        <div id="formDiv">
+            <form onsubmit="save()">
+                <div class="margin">Task Title:
+                    <input type="text" name="taskHead" id="taskHeadBox">
+                </div>
+                <br>
+                <br>
+                <textarea
+                    placeholder="Enter Text."
+                    id="descriptionBox"
+                    rows="4"
+                    style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px;"></textarea>
+                <br><br>
+
+                <label for="timeBox">Date and Time</label>
+                <br>
+                <input type="datetime-local" id="timeBox" min="2023-06-04T00:00">
+                <br><br>
+                <div class="buttons">
+                    <button type="submit" id="addButton">Add</button>
+                    <button type="reset" id="clearButton">Clear</button>
+                </div>
+            </form>
         </div>
-            <br>
-            <br>
-            <textarea placeholder="Enter Text." id="descriptionBox" rows="4" style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px;"></textarea>
-            <br><br>
-
-            <label for="timeBox">Date and Time</label>
-            <br>
-            <input type="datetime-local" id="timeBox" min="2017-04-01">
-            <br><br>
-
-            <button type="submit" id="addButton">Add task</button>
-            <button type="reset" id="clearButton">Clear</button>
-        </form>
-    </div>
-    <section id="sectionTasks"></section>
-</body>
+        <section id="sectionTasks"></section>
+    </body>
 
 </html>
