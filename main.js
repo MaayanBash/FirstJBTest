@@ -3,6 +3,7 @@ displayTasks();
 
 // Saving new task:
 function save() {
+    event.preventDefault();
   // Take DOM elements
   const taskHeadBox = document.getElementById("taskHeadBox");
   const descriptionBox = document.getElementById("descriptionBox");
@@ -52,7 +53,6 @@ function save() {
   timeBox.value = "";
 
   // Prevent form submission
-  event.preventDefault();
 
   // Call displayTasks function to update the displayed tasks
   displayTasks(false);
